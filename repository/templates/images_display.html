@@ -1,0 +1,51 @@
+
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Gallery</title> 
+  
+      <meta name="viewport" content="width=device-width, initial-scale=1"> 
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+      </script> 
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"> 
+      </script> 
+</head> 
+<body> 
+    <h1 style="padding-left: 20px;">Gallery</h1>
+    <b style="float: right; padding-right: 50px; clear:both;"   >You are logged in as: {{ user }} </b>
+    <div style="padding-right: 50px;">
+        <button style="float: right; clear:both;" onclick="location.href = '/logout?next=/';" type="submit">Logout</button> 
+    </div>
+    
+
+    <div style="padding-bottom: 50px; padding-left: 20px;">
+        <button onclick="location.href = '/upload';" type="submit">Upload a new photo</button> 
+    </div>
+    <div  style="clear: both;"> 
+        <h2 style="padding-left: 20px;">Public Images</h2>
+        {% for image in public_images %} 
+        <div class="col-md-4"> 
+                {{ image.image_name }} 
+                <form action='/gallery' method='POST'>
+                    <button style="float: right;" type="submit" name="delete_btn" value="{{ image.id }}">X</button> 
+                </form>
+                 <img src="{{ image.image_file.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
+        </div> 
+        {% endfor %} 
+    </div>
+    <div style="clear: both;">
+        <h2 style="padding-left: 20px; padding-top: 20px;">Private Images</h2>
+        {% for image in private_images %} 
+        <div class="col-md-4"> 
+                {{ image.image_name }} 
+                <form action='/gallery' method='POST'>
+                    <button style="float: right;" type="submit" name="delete_btn" value="{{ image.id }}">X</button> 
+                </form>
+                 <img src="{{ image.image_file.url }}" class="img-responsive" style="width: 100%; float: left; margin-right: 10px;" /> 
+        </div> 
+        {% endfor %} 
+    </div>
+</body> 
+</html> 

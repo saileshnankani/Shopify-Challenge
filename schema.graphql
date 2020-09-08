@@ -1,0 +1,59 @@
+type User {
+  id: ID!
+  name: String!
+  username: String!
+  password: String!
+  images: [Image]
+}
+
+type Image {
+  id: ID!
+  name: String!
+  location: String!
+  user: User
+  tags: [String]
+}
+
+type Query {
+  user(id: ID!): User
+  image(id: ID!): Image
+  users: [User]
+  images: [Image]
+}
+
+input UserInput {
+  id: ID
+  name: String
+  username: String
+  password: String
+}
+
+input ImageInput {
+  id: ID
+  name: String
+  location: String
+  user: UserInput
+  tags: [String]
+}
+
+type UserPayload {
+  ok: Boolean
+  user: User
+}
+
+type ImagePayload {
+  ok: Boolean
+  image: Image
+}
+
+type Mutation {
+  createUser(input: UserInput) : UserPayload
+  createImage(input: ImageInput) : ImagePayload
+  updateUser(id: ID!, input: UserInput) : UserPayload
+  updateImage(id: ID!, input: ImageInput) : ImagePayload
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html> 
+<!-- used from https://github.com/jordandearsley/ShopifyChallenge/blob/master/templates/registration/login.html -->
+<html lang="en"> 
+	<style>
+		body {
+		  background: #0d4ba1;
+		}
+	  
+		.upload {
+		  margin: 20px auto;
+		  width: 300px;
+		  padding: 30px 25px;
+		  background: white;
+		  border: 1px solid #c4c4c4;
+		  font-family: Arial;
+		}
+	  
+		h1.upload-title {
+		  margin: -28px -25px 25px;
+		  padding: 15px 25px;
+		  line-height: 30px;
+		  font-size: 25px;
+		  font-weight: 300;
+		  color: #2f075c;
+		  text-align:center;
+		  background: #f7f7f7;
+		}
+	  
+		p input {
+		  width: 100%;
+		  height: 50px;
+		  margin-bottom: 25px;
+		  padding-left:10px;
+		  font-size: 15px;
+		  background: #fff;
+		  border: 1px solid #ccc;
+		  border-radius: 4px;
+		}
+	  
+		p input:focus {
+			border-color:#6e8095;
+			outline: none;
+		}
+		.upload-button {
+		  width: 100%;
+		  height: 50px;
+		  padding: 0;
+		  margin-bottom: 25px;
+		  font-size: 20px;
+		  color: #fff;
+		  text-align: center;
+		  background: #f0776c;
+		  border: 0;
+		  border-radius: 5px;
+		  cursor: pointer; 
+		  outline:0;
+		}
+	  </style>
+	  
+<head> 
+	<meta charset="UTF-8"> 
+	<title>Image</title> 
+</head> 
+<body> 
+	<form method = "post" class="upload" enctype="multipart/form-data"> 
+		<h1 class="upload-title">Upload</h1>
+		{% csrf_token %} 
+		{{ form.as_p }} 
+		<button type="submit" class="upload-button">Upload</button> 
+	</form> 
+</body> 
+</html> 
